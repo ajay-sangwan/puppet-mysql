@@ -1,13 +1,9 @@
 # @summary A short summary of the purpose of this class
-#
-# A description of what this class does
-#
-# @example
-#   include mysql::service
+#   Ensures service is started and enabled and allow for restarts
 class mysql::service {
-  service { 'mysql':
-    ensure     => 'running',
-    enable     => true,
-    hasrestart => true,
+  service { "${mysql::service_name}":
+    ensure     => $mysql::service_ensure,
+    enable     => $mysql::service_enable,
+    hasrestart => $mysql::service_hasrestart,
   }
 }
